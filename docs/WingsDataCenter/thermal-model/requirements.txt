@@ -1,0 +1,7 @@
+# Currently uses Python standard library only (math, dataclasses).
+# Add these when you extend the model (e.g. plotting results, sweeping
+# parameter ranges, or fitting to prototype measurement data):
+#
+# numpy
+# matplotlib
+# scipy
