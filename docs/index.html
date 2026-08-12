@@ -29,7 +29,6 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -74,20 +73,13 @@
     text-transform: uppercase;
     color: var(--text);
   }
-
   h2 { font-size: 22px; letter-spacing: 0.04em; }
 
-  .hr {
-    height: 1px;
-    background: var(--line);
-    border: none;
-    margin: 56px 0;
-  }
+  .hr { height: 1px; background: var(--line); border: none; margin: 56px 0; }
 
   /* ---------- Header ---------- */
-
   header { padding: 20px 0; border-bottom: 1px solid var(--line); }
-  header .wrap { display: flex; align-items: center; justify-content: space-between; }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
   .brand { font-family: var(--mono); font-size: 13px; letter-spacing: 0.06em; color: var(--text-dim); }
   .brand strong { color: var(--text); }
   nav a {
@@ -102,21 +94,11 @@
   nav a:hover { color: var(--copper-bright); }
 
   /* ---------- Hero ---------- */
-
   .hero { padding: 72px 0 40px; }
   .hero .eyebrow { margin-bottom: 18px; }
-  .hero h1 {
-    font-size: clamp(34px, 6vw, 58px);
-    line-height: 1.04;
-    max-width: 12ch;
-  }
+  .hero h1 { font-size: clamp(34px, 6vw, 56px); line-height: 1.05; max-width: 15ch; }
   .hero h1 span { color: var(--copper-bright); }
-  .hero p.lede {
-    font-size: 18px;
-    color: var(--text-dim);
-    max-width: 56ch;
-    margin-top: 22px;
-  }
+  .hero p.lede { font-size: 18px; color: var(--text-dim); max-width: 58ch; margin-top: 22px; }
 
   .hero-actions { margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap; }
   .btn {
@@ -136,32 +118,17 @@
   .btn.primary:hover { background: var(--copper-bright); border-color: var(--copper-bright); color: #16181a; }
 
   /* ---------- Diagram ---------- */
-
-  .diagram-frame {
-    margin-top: 56px;
-    border: 1px solid var(--line);
-    background: var(--bg-inset);
-    padding: 8px;
-  }
+  .diagram-frame { margin-top: 56px; border: 1px solid var(--line); background: var(--bg-inset); padding: 8px; }
   .diagram-frame .diagram-label {
-    display: flex;
-    justify-content: space-between;
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-faint);
-    padding: 8px 10px 14px;
+    display: flex; justify-content: space-between;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text-faint); padding: 8px 10px 14px; flex-wrap: wrap; gap: 6px;
   }
   svg#fin-diagram { display: block; width: 100%; height: auto; }
 
   .wind-line {
-    stroke: var(--steel);
-    stroke-width: 1.4;
-    fill: none;
-    opacity: 0.75;
-    stroke-dasharray: 8 10;
-    animation: flow 2.6s linear infinite;
+    stroke: var(--steel); stroke-width: 1.4; fill: none; opacity: 0.75;
+    stroke-dasharray: 8 10; animation: flow 2.6s linear infinite;
   }
   .wind-line:nth-child(2n) { animation-duration: 3.1s; opacity: 0.5; }
   .wind-line:nth-child(3n) { animation-duration: 2.2s; opacity: 0.6; }
@@ -169,17 +136,21 @@
 
   .fin { fill: var(--bg-raised); stroke: var(--line-bright); stroke-width: 1.2; }
   .fin-edge { stroke: var(--copper); stroke-width: 1.6; fill: none; }
-  .turbine-ring { fill: none; stroke: var(--copper-bright); stroke-width: 1.4; opacity: 0.9; }
-  .turbine-hub { fill: var(--copper-bright); }
+  .fin.optional-host { stroke: var(--line-bright); stroke-dasharray: none; }
+  .turbine-ring { fill: none; stroke: var(--copper-bright); stroke-width: 1.2; opacity: 0.75; stroke-dasharray: 3 3; }
+  .turbine-hub { fill: var(--copper-bright); opacity: 0.85; }
+  .optional-tag {
+    font-family: var(--mono); font-size: 8.5px; fill: var(--copper-bright);
+    letter-spacing: 0.05em; opacity: 0.9;
+  }
+  .optional-leader { stroke: var(--copper-bright); stroke-width: 1; opacity: 0.5; stroke-dasharray: 2 2; }
   .building { fill: var(--bg-inset); stroke: var(--line-bright); stroke-width: 1.2; }
+  .loop-line { stroke: var(--steel); stroke-width: 1.2; fill: none; stroke-dasharray: 4 4; opacity: 0.7; }
   .diagram-text { font-family: var(--mono); font-size: 10px; fill: var(--text-faint); letter-spacing: 0.05em; }
 
-  @media (prefers-reduced-motion: reduce) {
-    .wind-line { animation: none; }
-  }
+  @media (prefers-reduced-motion: reduce) { .wind-line { animation: none; } }
 
-  /* ---------- Section: concept ---------- */
-
+  /* ---------- Sections ---------- */
   section { padding: 12px 0; }
   .section-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 24px; }
   .section-head .num { font-family: var(--mono); font-size: 12px; color: var(--copper); }
@@ -188,124 +159,77 @@
   p + p { margin-top: 14px; }
 
   .why-grid {
-    margin-top: 32px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--line);
-    border: 1px solid var(--line);
+    margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+    background: var(--line); border: 1px solid var(--line);
   }
   .why-cell { background: var(--bg); padding: 22px; }
   .why-cell .k { font-family: var(--mono); font-size: 11px; color: var(--steel); letter-spacing: 0.06em; text-transform: uppercase; }
   .why-cell p { margin-top: 8px; font-size: 14px; }
 
-  @media (max-width: 640px) {
-    .why-grid { grid-template-columns: 1fr; }
-  }
+  @media (max-width: 640px) { .why-grid { grid-template-columns: 1fr; } }
 
   /* ---------- Status table ---------- */
-
-  table.status {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 8px;
-    font-size: 14px;
-  }
+  table.status { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 14px; }
   table.status th {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--text-faint);
-    text-align: left;
-    padding: 10px 14px;
-    border-bottom: 1px solid var(--line-bright);
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--text-faint); text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line-bright);
   }
-  table.status td {
-    padding: 14px;
-    border-bottom: 1px solid var(--line);
-    vertical-align: top;
-    color: var(--text-dim);
-  }
+  table.status td { padding: 14px; border-bottom: 1px solid var(--line); vertical-align: top; color: var(--text-dim); }
   table.status td.component { color: var(--text); font-weight: 500; }
   .status-pill {
-    display: inline-block;
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    padding: 3px 8px;
-    border: 1px solid currentColor;
-    white-space: nowrap;
+    display: inline-block; font-family: var(--mono); font-size: 10px; letter-spacing: 0.05em;
+    text-transform: uppercase; padding: 3px 8px; border: 1px solid currentColor; white-space: nowrap;
   }
   .status-pill.done { color: var(--green); }
   .status-pill.partial { color: var(--amber); }
   .status-pill.todo { color: var(--text-faint); }
 
   /* ---------- Findings ---------- */
-
   .findings { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 8px; }
   .finding { background: var(--bg); padding: 24px 20px; }
-  .finding .big { font-family: var(--mono); font-size: 34px; color: var(--copper-bright); line-height: 1; }
+  .finding .big { font-family: var(--mono); font-size: 32px; color: var(--copper-bright); line-height: 1; }
   .finding .unit { font-family: var(--mono); font-size: 13px; color: var(--text-faint); margin-left: 4px; }
   .finding .label { margin-top: 10px; font-size: 13px; color: var(--text-dim); }
 
-  @media (max-width: 640px) {
-    .findings { grid-template-columns: 1fr; }
-  }
+  @media (max-width: 640px) { .findings { grid-template-columns: 1fr; } }
 
   code.inline {
-    font-family: var(--mono);
-    font-size: 0.9em;
-    background: var(--bg-inset);
-    padding: 2px 6px;
-    border: 1px solid var(--line);
-    color: var(--copper-bright);
+    font-family: var(--mono); font-size: 0.9em; background: var(--bg-inset);
+    padding: 2px 6px; border: 1px solid var(--line); color: var(--copper-bright);
   }
 
   ol.steps { margin-top: 16px; padding-left: 0; list-style: none; counter-reset: step; }
   ol.steps li {
-    counter-increment: step;
-    position: relative;
-    padding-left: 40px;
-    margin-bottom: 18px;
-    color: var(--text-dim);
-    font-size: 14px;
+    counter-increment: step; position: relative; padding-left: 40px; margin-bottom: 18px;
+    color: var(--text-dim); font-size: 14px;
   }
   ol.steps li::before {
-    content: counter(step);
-    position: absolute;
-    left: 0; top: -2px;
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--copper);
-    border: 1px solid var(--line-bright);
-    width: 24px; height: 24px;
+    content: counter(step); position: absolute; left: 0; top: -2px;
+    font-family: var(--mono); font-size: 12px; color: var(--copper);
+    border: 1px solid var(--line-bright); width: 24px; height: 24px;
     display: flex; align-items: center; justify-content: center;
   }
   ol.steps li strong { color: var(--text); font-weight: 500; }
 
-  /* ---------- CTA ---------- */
-
-  .cta {
-    margin: 64px 0;
-    border: 1px solid var(--line-bright);
-    padding: 36px;
-    background: var(--bg-raised);
+  /* ---------- Note callout ---------- */
+  .note {
+    margin-top: 24px; border-left: 2px solid var(--copper); background: var(--bg-inset);
+    padding: 16px 20px; font-size: 14px;
   }
+  .note .note-label {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--copper); margin-bottom: 6px; display: block;
+  }
+  .note p { color: var(--text-dim); font-size: 14px; }
+
+  /* ---------- CTA ---------- */
+  .cta { margin: 64px 0; border: 1px solid var(--line-bright); padding: 36px; background: var(--bg-raised); }
   .cta h2 { margin-bottom: 12px; }
   .cta p { max-width: 60ch; }
   .cta .hero-actions { margin-top: 24px; }
 
   /* ---------- Footer ---------- */
-
-  footer {
-    border-top: 1px solid var(--line);
-    padding: 28px 0 48px;
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--text-faint);
-  }
+  footer { border-top: 1px solid var(--line); padding: 28px 0 48px; font-family: var(--mono); font-size: 12px; color: var(--text-faint); }
   footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
   footer a { color: var(--text-dim); }
   footer a:hover { color: var(--copper-bright); }
@@ -329,12 +253,13 @@
 
   <section class="hero">
     <div class="eyebrow">MIT-Licensed · Early-Stage Concept · Open for Contribution</div>
-    <h1>The building<br>as the <span>heatsink</span>.</h1>
+    <h1>The building<br>as the <span>heat exchanger</span>.</h1>
     <p class="lede">
       A concept for building-integrated, low-water data center cooling:
-      exterior heat-exchanger wings use large surface area, natural airflow,
-      and a closed thermal loop to reject compute heat — with fan assistance
-      and optional wind-energy recovery where conditions justify them.
+      exterior walls shaped as giant curved fins, carrying heat away from a
+      closed thermal loop, working with prevailing wind and natural
+      convection — with fans available where wind falls short, and small
+      turbines only where conditions actually justify them.
     </p>
     <div class="hero-actions">
       <a class="btn primary" href="https://github.com/keylessabyss/wingsdatacenter">View the repo</a>
@@ -343,10 +268,10 @@
 
     <div class="diagram-frame">
       <div class="diagram-label">
-        <span>FIG. 1 — BUILDING-INTEGRATED HEAT-EXCHANGER WINGS</span>
-        <span>NOT TO SCALE</span>
+        <span>FIG. 1 — WIND-ASSISTED FIN ARRAY, ELEVATION</span>
+        <span>TURBINE: OPTIONAL, SITE-DEPENDENT · NOT TO SCALE</span>
       </div>
-      <svg id="fin-diagram" viewBox="0 0 880 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of wind flowing across curved exterior heat-exchanger wings connected to a closed thermal loop, with the data center building at the base">
+      <svg id="fin-diagram" viewBox="0 0 880 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of wind flowing through curved building fins carrying heat from a closed loop inside the data center, with one fin shown hosting an optional turbine">
         <!-- wind lines -->
         <path class="wind-line" d="M -20 60 C 60 40, 90 80, 170 60 S 260 40, 330 60" />
         <path class="wind-line" d="M -20 100 C 60 90, 90 120, 170 100 S 260 90, 330 100" />
@@ -357,35 +282,36 @@
         <path class="wind-line" d="M 700 60 C 760 40, 790 80, 860 60" />
         <path class="wind-line" d="M 700 100 C 760 90, 790 120, 860 100" />
 
-        <!-- fin modules -->
+        <!-- plain fin modules (default, no turbine) -->
         <g>
           <path class="fin" d="M 150 260 L 130 40 Q 160 20 190 40 L 210 260 Z" />
           <path class="fin-edge" d="M 130 40 Q 160 20 190 40" />
-          <circle class="turbine-ring" cx="160" cy="150" r="20" />
-          <circle class="turbine-hub" cx="160" cy="150" r="4" />
-        </g>
-        <g>
-          <path class="fin" d="M 330 260 L 310 40 Q 340 20 370 40 L 390 260 Z" />
-          <path class="fin-edge" d="M 310 40 Q 340 20 370 40" />
-          <circle class="turbine-ring" cx="340" cy="150" r="20" />
-          <circle class="turbine-hub" cx="340" cy="150" r="4" />
         </g>
         <g>
           <path class="fin" d="M 510 260 L 490 40 Q 520 20 550 40 L 570 260 Z" />
           <path class="fin-edge" d="M 490 40 Q 520 20 550 40" />
-          <circle class="turbine-ring" cx="520" cy="150" r="20" />
-          <circle class="turbine-hub" cx="520" cy="150" r="4" />
         </g>
         <g>
           <path class="fin" d="M 690 260 L 670 40 Q 700 20 730 40 L 750 260 Z" />
           <path class="fin-edge" d="M 670 40 Q 700 20 730 40" />
-          <circle class="turbine-ring" cx="700" cy="150" r="20" />
-          <circle class="turbine-hub" cx="700" cy="150" r="4" />
         </g>
 
-        <!-- building base -->
+        <!-- one fin shown hosting an optional turbine, clearly marked -->
+        <g>
+          <path class="fin optional-host" d="M 330 260 L 310 40 Q 340 20 370 40 L 390 260 Z" />
+          <path class="fin-edge" d="M 310 40 Q 340 20 370 40" />
+          <circle class="turbine-ring" cx="340" cy="150" r="20" />
+          <circle class="turbine-hub" cx="340" cy="150" r="3.5" />
+          <line class="optional-leader" x1="360" y1="140" x2="410" y2="110" />
+          <text class="optional-tag" x="414" y="107">OPTIONAL TURBINE</text>
+          <text class="optional-tag" x="414" y="119">(SITE WIND &gt; ~5–7.5 M/S)</text>
+        </g>
+
+        <!-- building base with closed loop hint -->
         <rect class="building" x="60" y="260" width="760" height="46" />
-        <text class="diagram-text" x="80" y="288">DATA CENTER — CLOSED THERMAL LOOP TO EXTERIOR WINGS</text>
+        <path class="loop-line" d="M 100 283 L 780 283" />
+        <text class="diagram-text" x="80" y="277">DATA CENTER — CLOSED THERMAL LOOP</text>
+        <text class="diagram-text" x="80" y="300">NO OUTSIDE AIR ENTERS THE SERVER ENVIRONMENT</text>
 
         <text class="diagram-text" x="20" y="30">WIND →</text>
       </svg>
@@ -398,20 +324,20 @@
     <div class="section-head"><span class="num">01</span><h2>The concept</h2></div>
     <p>
       Hyperscale data centers reject enormous amounts of heat. Depending on
-      facility design and climate, heat rejection can involve cooling towers,
-      evaporative water consumption, chillers, pumps, fans, dry coolers, or
-      combinations of these systems. Water consumption is an especially
-      important constraint in drought-prone regions.
+      facility design and climate, heat rejection can involve cooling
+      towers, evaporative water consumption, chillers, pumps, fans, dry
+      coolers, or combinations of these systems. Water consumption is an
+      especially important constraint in drought-prone regions.
     </p>
     <p>
       This concept borrows principles from something much smaller: a CPU
       tower cooler, heat pipe, radiator, or motorcycle engine's finned
       cylinder. The building envelope becomes part of the heat-rejection
-      system: a closed thermal loop carries compute heat to large exterior
+      system — a closed thermal loop carries compute heat to large exterior
       wings, where extended surface area and airflow reject it to the
-      atmosphere. Curved channels can work with prevailing wind, fans can
-      assist when natural airflow is insufficient, and turbines remain an
-      optional secondary feature rather than a requirement.
+      atmosphere. Curved channels can work with prevailing wind, fans assist
+      when natural airflow is insufficient, and turbines remain an optional
+      secondary feature rather than a requirement.
     </p>
 
     <div class="why-grid">
@@ -432,6 +358,19 @@
         <p>The building doesn't hide its thermal architecture behind a warehouse facade. It looks like what it's doing.</p>
       </div>
     </div>
+
+    <div class="note">
+      <span class="note-label">On turbines</span>
+      <p>
+        Turbines are a secondary, optional feature — not the core cooling
+        concept. They create drag, which can reduce the airflow available
+        for cooling. The current model estimates a crossover region around
+        5–7.5 m/s, below which a turbine may cost more in lost cooling than
+        it recovers in electricity. A Wing without turbines may outperform a
+        Wing with turbines at many sites, and the cooling architecture is
+        not designed to depend on turbines succeeding.
+      </p>
+    </div>
   </section>
 
   <hr class="hr">
@@ -450,7 +389,7 @@
       </thead>
       <tbody>
         <tr>
-          <td class="component">Core concept</td>
+          <td class="component">Core Wing / fin concept</td>
           <td><span class="status-pill partial">Grounded</span></td>
           <td>Based on established extended-surface / fin theory and forced convection principles.</td>
         </tr>
@@ -467,7 +406,12 @@
         <tr>
           <td class="component">Fan-assisted Wing channels</td>
           <td><span class="status-pill todo">Proposed</span></td>
-          <td>Natural airflow remains preferred, with mechanical assistance available when wind or ambient conditions are insufficient.</td>
+          <td>Natural airflow preferred, with mechanical assistance available when wind or ambient conditions fall short.</td>
+        </tr>
+        <tr>
+          <td class="component">Optional wind turbines</td>
+          <td><span class="status-pill partial">Explored, secondary</span></td>
+          <td>Included only in first-pass mathematical exploration. Not required by the core concept — may hurt cooling at low-wind sites.</td>
         </tr>
         <tr>
           <td class="component">Python thermal model</td>
@@ -502,11 +446,11 @@
     <div class="findings">
       <div class="finding">
         <div><span class="big">+140</span><span class="unit">% heat rejected</span></div>
-        <div class="label">Current simplified model result for a finned "wing" exterior (~3× modeled surface area) vs. an equivalent flat wall under the same assumed conditions. Requires CFD and physical validation.</div>
+        <div class="label">Modeled result for a finned Wing exterior (~3× surface area) vs. an equivalent flat wall, same conditions. Requires CFD and physical validation.</div>
       </div>
       <div class="finding">
         <div><span class="big">5–7.5</span><span class="unit">m/s crossover</span></div>
-        <div class="label">Current model estimate for the region where turbine obstruction may stop being a net cooling cost. Turbines are optional and require CFD validation.</div>
+        <div class="label">Estimated region where optional turbine obstruction may stop being a net cooling cost. Not required for the core concept to work.</div>
       </div>
       <div class="finding">
         <div><span class="big">Small</span><span class="unit">turbine yield</span></div>
@@ -535,11 +479,10 @@
     <h2>This is meant to be taken further</h2>
     <p>
       Not pursued for profit or exclusive credit. If any part of this is
-      useful — the framing, the math, the visual language — it's meant to be
-      picked up, corrected, and improved by whoever can actually build on
-      it: thermal engineers, architects, students looking for a CFD project,
-      or anyone who wants to run the numbers better than this repo currently
-      does.
+      useful — the framing, the math, the architecture, CFD work, visual
+      language, or even a failed experiment that tells someone what not to
+      build — it's meant to be picked up, corrected, improved, and built
+      upon by whoever can actually take it further.
     </p>
     <div class="hero-actions">
       <a class="btn primary" href="https://github.com/keylessabyss/wingsdatacenter">Open the repo</a>
