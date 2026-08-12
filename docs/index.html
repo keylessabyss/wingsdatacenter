@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wing Data Center — an open cooling concept</title>
-<meta name="description" content="An open, MIT-licensed concept for passively-cooled, wind-integrated data center architecture.">
+<meta name="description" content="An open, MIT-licensed concept for building-integrated, low-water data center cooling using architectural heat-exchanger wings, natural airflow, and closed-loop thermal transport.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -331,11 +331,10 @@
     <div class="eyebrow">MIT-Licensed · Early-Stage Concept · Open for Contribution</div>
     <h1>The building<br>as the <span>heatsink</span>.</h1>
     <p class="lede">
-      A concept for passively-cooled data center architecture: exterior walls
-      shaped as giant curved fins, oriented to work with prevailing wind,
-      with small turbines recovering a fraction of that airflow as
-      electricity — cutting water use without hiding the cooling system
-      behind a warehouse facade.
+      A concept for building-integrated, low-water data center cooling:
+      exterior heat-exchanger wings use large surface area, natural airflow,
+      and a closed thermal loop to reject compute heat — with fan assistance
+      and optional wind-energy recovery where conditions justify them.
     </p>
     <div class="hero-actions">
       <a class="btn primary" href="https://github.com/keylessabyss/wingsdatacenter">View the repo</a>
@@ -344,10 +343,10 @@
 
     <div class="diagram-frame">
       <div class="diagram-label">
-        <span>FIG. 1 — WIND-ASSISTED FIN ARRAY, ELEVATION</span>
+        <span>FIG. 1 — BUILDING-INTEGRATED HEAT-EXCHANGER WINGS</span>
         <span>NOT TO SCALE</span>
       </div>
-      <svg id="fin-diagram" viewBox="0 0 880 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of wind flowing through curved building fins toward integrated turbines, with the data center building at the base">
+      <svg id="fin-diagram" viewBox="0 0 880 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of wind flowing across curved exterior heat-exchanger wings connected to a closed thermal loop, with the data center building at the base">
         <!-- wind lines -->
         <path class="wind-line" d="M -20 60 C 60 40, 90 80, 170 60 S 260 40, 330 60" />
         <path class="wind-line" d="M -20 100 C 60 90, 90 120, 170 100 S 260 90, 330 100" />
@@ -386,7 +385,7 @@
 
         <!-- building base -->
         <rect class="building" x="60" y="260" width="760" height="46" />
-        <text class="diagram-text" x="80" y="288">DATA CENTER — LIQUID LOOP TO EXTERIOR FIN SURFACE</text>
+        <text class="diagram-text" x="80" y="288">DATA CENTER — CLOSED THERMAL LOOP TO EXTERIOR WINGS</text>
 
         <text class="diagram-text" x="20" y="30">WIND →</text>
       </svg>
@@ -398,34 +397,35 @@
   <section id="concept">
     <div class="section-head"><span class="num">01</span><h2>The concept</h2></div>
     <p>
-      Hyperscale data centers reject enormous amounts of heat, and much of
-      today's cooling depends on evaporating large volumes of water through
-      cooling towers — a real constraint as facilities are increasingly
-      sited in drought-prone regions.
+      Hyperscale data centers reject enormous amounts of heat. Depending on
+      facility design and climate, heat rejection can involve cooling towers,
+      evaporative water consumption, chillers, pumps, fans, dry coolers, or
+      combinations of these systems. Water consumption is an especially
+      important constraint in drought-prone regions.
     </p>
     <p>
-      This concept borrows a principle from something much smaller: a CPU
-      tower cooler, or a motorcycle engine's finned cylinder. Both expose
-      their cooling geometry as their visible form, using extended surface
-      area to move heat into moving air. Scaled to building size, a data
-      center's exterior could do the same job — with curved fins shaped to
-      work with prevailing wind, and small turbines placed in select
-      channels to recover a fraction of that airflow as electricity for
-      auxiliary loads like fans and pumps.
+      This concept borrows principles from something much smaller: a CPU
+      tower cooler, heat pipe, radiator, or motorcycle engine's finned
+      cylinder. The building envelope becomes part of the heat-rejection
+      system: a closed thermal loop carries compute heat to large exterior
+      wings, where extended surface area and airflow reject it to the
+      atmosphere. Curved channels can work with prevailing wind, fans can
+      assist when natural airflow is insufficient, and turbines remain an
+      optional secondary feature rather than a requirement.
     </p>
 
     <div class="why-grid">
       <div class="why-cell">
         <div class="k">Cooling</div>
-        <p>Extended exterior surface area rejects more heat per degree of temperature difference, passively, in still air or moving — no water evaporated.</p>
+        <p>Extended exterior surface area increases the opportunity to reject heat to ambient air while reducing dependence on evaporative water consumption.</p>
       </div>
       <div class="why-cell">
         <div class="k">Airflow</div>
-        <p>Curved fin geometry channels prevailing wind across the heat-rejecting surface, reducing dependence on powered fans.</p>
+        <p>Curved Wing channels can work with prevailing wind and natural convection, while fans provide assistance when ambient airflow is insufficient.</p>
       </div>
       <div class="why-cell">
-        <div class="k">Recovery</div>
-        <p>Small turbines in select channels harvest a fraction of that wind as electricity — enough to offset auxiliary loads, not compute.</p>
+        <div class="k">Closed loop</div>
+        <p>Compute heat stays inside a sealed thermal transport loop; outside air cools the exterior exchanger without entering the server environment.</p>
       </div>
       <div class="why-cell">
         <div class="k">Expression</div>
@@ -453,6 +453,21 @@
           <td class="component">Core concept</td>
           <td><span class="status-pill partial">Grounded</span></td>
           <td>Based on established extended-surface / fin theory and forced convection principles.</td>
+        </tr>
+        <tr>
+          <td class="component">Closed-loop thermal transport</td>
+          <td><span class="status-pill partial">Conceptual</span></td>
+          <td>Compute heat is transported to exterior Wings without requiring outside air to enter the server environment.</td>
+        </tr>
+        <tr>
+          <td class="component">Two-phase Wing condenser</td>
+          <td><span class="status-pill todo">Proposed</span></td>
+          <td>Future study: sealed phase-change / condenser or thermosiphon architecture. Not yet modeled or validated.</td>
+        </tr>
+        <tr>
+          <td class="component">Fan-assisted Wing channels</td>
+          <td><span class="status-pill todo">Proposed</span></td>
+          <td>Natural airflow remains preferred, with mechanical assistance available when wind or ambient conditions are insufficient.</td>
         </tr>
         <tr>
           <td class="component">Python thermal model</td>
@@ -487,11 +502,11 @@
     <div class="findings">
       <div class="finding">
         <div><span class="big">+140</span><span class="unit">% heat rejected</span></div>
-        <div class="label">A finned "wing" exterior (~3× surface area) vs. an equivalent flat wall, at the same wind speed and temperature difference. Holds even in still air.</div>
+        <div class="label">Current simplified model result for a finned "wing" exterior (~3× modeled surface area) vs. an equivalent flat wall under the same assumed conditions. Requires CFD and physical validation.</div>
       </div>
       <div class="finding">
         <div><span class="big">5–7.5</span><span class="unit">m/s crossover</span></div>
-        <div class="label">Turbine drag reduces cooling airflow. Below this wind speed, a turbine costs more (in lost cooling) than it recovers in electricity.</div>
+        <div class="label">Current model estimate for the region where turbine obstruction may stop being a net cooling cost. Turbines are optional and require CFD validation.</div>
       </div>
       <div class="finding">
         <div><span class="big">Small</span><span class="unit">turbine yield</span></div>
@@ -505,10 +520,14 @@
   <section>
     <div class="section-head"><span class="num">04</span><h2>What this needs next</h2></div>
     <ol class="steps">
-      <li><strong>Real CFD</strong> — SimScale, OpenFOAM, or Ansys Fluent on an actual fin geometry, to replace the placeholder drag and loss coefficients with measured numbers.</li>
-      <li><strong>A tabletop physical prototype</strong> — flat vs. finned enclosure, same heat source, same wind — to check the model against reality at small scale.</li>
-      <li><strong>Review from people who do this for a living</strong> — data-center thermal engineers, HVAC engineers, or an architecture firm that designs hyperscale facilities.</li>
-      <li><strong>Site wind-data analysis</strong> — the crossover finding means this concept's viability depends heavily on local average wind speed, which hasn't been checked against a real candidate site yet.</li>
+      <li><strong>Reproduce a known CFD case</strong> — complete a conventional heatsink / conjugate heat-transfer tutorial and verify the workflow before testing Wing geometry.</li>
+      <li><strong>Single-Wing CFD</strong> — compare a flat control surface with one Wing using the same heat input, material, ambient temperature, and wind conditions.</li>
+      <li><strong>Wind-speed and geometry sweeps</strong> — study fin spacing, curvature, height, channel width, wind direction, recirculation, and pressure drop.</li>
+      <li><strong>Fan-assisted airflow study</strong> — determine whether large Wing channels can reduce required mechanical airflow power.</li>
+      <li><strong>Two-phase thermal study</strong> — investigate a sealed condenser / thermosiphon architecture for transporting heat into the Wing structure.</li>
+      <li><strong>Turbine CFD</strong> — only after the cooling geometry is understood; measure the actual cooling penalty caused by airflow obstruction.</li>
+      <li><strong>A tabletop physical prototype</strong> — flat vs. finned enclosure, same heat source and airflow, to check simulation against reality.</li>
+      <li><strong>Professional and site review</strong> — thermal, HVAC, structural, and hyperscale engineers plus real temperature, humidity, wind, corrosion, and water data.</li>
     </ol>
   </section>
 
